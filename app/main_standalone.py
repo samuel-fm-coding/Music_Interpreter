@@ -22,7 +22,7 @@ app.add_middleware(
 )
 
 # Carregar o modelo com joblib
-modelo = joblib.load('models/ai_v1.robson')
+modelo = joblib.load('models/ai_v2.robson')
 
 
 # Modelo de dados para receber o texto
