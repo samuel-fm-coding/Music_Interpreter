@@ -5,13 +5,19 @@ const handlePrediction = async () => {
   const texto = DashboardView.getText();
 
   if (!texto) {
-    DashboardView.displayResult("Por favor, digite a letra da música desejada.");
+    DashboardView.displayError("Por favor, digite a letra da música desejada.", handlePrediction);
     return;
   }
 
   try {
+    DashboardView.displayLoading();
+
     const prediction = await DashboardModel.makePrediction(texto);
-    DashboardView.displayResult(`Gênero: ${prediction}`);
+
+    setTimeout(() => {
+      DashboardView.displayResult(`Gênero: ${prediction}`);
+    }, 1000);
+
   } catch (error) {
     DashboardView.displayResult(error.message);
   }
